@@ -1,0 +1,142 @@
+<ion-header>
+	<custom-navbar [hideBackButton]="false" [hideHamburgerButton]="false" [pageTitle]="( 'ai_assistant_page_title' | translate )" [showSearchButton]="false"></custom-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div>
+		<!-- <div class="profile-gradient-header"></div> -->
+		<div class="content-max-width">
+			<!-- <div class="assistant-profile-container">
+				<div>
+					<img src="assets/imgs/temp-ai-icon.png" class="assistant-profile-img">
+				</div>
+				<div class="assistant-profile-text">
+					<h1 *ngIf="prompt != null">{{ client.getName() }}</h1>
+					<h3 class="read-full-bio-link" (click)="handleBioButtonClick(client)">{{ "ai_assistant_read_full_bio_link" | translate }}</h3>
+				</div>
+			</div> -->
+			<ion-item>
+				<div class="profile-container">
+					<div class="profile-name-img-container">
+						<client-profile-picture *ngIf="client != null" [profile_picture_uri]="client.getProfilePicture()" [client_name]="client.getName()"></client-profile-picture>
+						<h2 *ngIf="client != null" class="client-name">{{ client.getName() }}</h2>
+					</div>
+					<div class="profile-text-container">
+						<p *ngIf="prompt != null">{{ mi_technique.getUserInstruction(client.getName()) }}</p>
+						<p class="read-full-bio-link" (click)="handleBioButtonClick(client)">{{ "ai_assistant_read_full_bio_link" | translate }}</p>
+					</div>
+				</div>
+			</ion-item>
+
+			<ion-item *ngIf="app.user.isPermissionEnabled('administrates-ai-assistant') && ai_assistant != null">
+				<ion-label>{{ "ai_assistant_gpt_deployment_dropdown_label" | translate }}</ion-label>
+				<ion-select [(ngModel)]="ai_assistant.getSystemInfo()['deployment_id']" name="ai_assistant.getSystemInfo()['deployment_id']" (ionChange)="handleDeploymentSwitch($event)">
+					<ion-option value="MyMI-gpt35">
+						{{ "ai_assistant_gpt_35_deployment" | translate }}
+					</ion-option>
+					<ion-option value="gpt-4-32k-2023-12-08">
+						{{ "ai_assistant_gpt_4_deployment" | translate }}
+					</ion-option>
+				</ion-select>
+			</ion-item>
+
+			<ion-list no-lines>
+				<ion-item class="comment-section">
+					<div *ngIf="prompt != null && prompt.getTherapistPrompt() != ''" class="user-message-container therapist-prompt">
+						<div class="thread-container">
+							<div class="author-container">
+							</div>
+							<div class="message-container">
+								<p [innerHTML]="prompt.getTherapistPrompt() | render_shortcodes"></p>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="prompt != null && prompt.getContent() != ''" class="ai-container">
+						<div class="ai-content-container">
+							<div class="assistant-info-container">
+								<div class="author-container">
+								</div>
+							</div>
+
+							<div class="message-container">
+								<p [innerHTML]="prompt.getContent() | render_shortcodes"></p>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="interaction != null && interaction.getUserMessage() != ''" class="user-message-container">
+						<div class="information-container">
+							<h2>{{ "ai_assistant_conversation_page_your_response_header" | translate }}</h2>
+						</div>
+						<div class="thread-container">
+							<div class="author-container">
+							</div>
+							<div class="message-container">
+								<p [innerHTML]="interaction.getUserMessage() | render_shortcodes"></p>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="interaction != null && interaction.getSystemMessage() != ''" class="evaluation-container" id="assistant-message">
+						<div class="ai-content-container">
+							<div class="evaluation-header-container">
+								<h1>{{ "ai_assistant_conversation_page_evalution_header" | translate }}</h1>
+							</div>
+
+							<div class="message-container">
+								<p [innerHTML]="interaction.getSystemMessage() | render_shortcodes"></p>
+							</div>
+						</div>
+					</div>
+				</ion-item>
+			</ion-list>
+
+			<div *ngIf="interaction != null && interaction.getSystemMessage() != ''" class="feedback">
+				<div class="feedback-text-content">
+					<h2 class="feedback-header">{{ "ai_assistant_conversation_page_feedback_header" | translate }}</h2>
+					<p class="feedback-description">{{ "ai_assistant_conversation_page_feedback_instructions" | translate }}</p>
+				</div>
+				<div class="feedback-button-container">
+					<button class="feedback-button" ion-button (click)="handleFeedbackButtonClick()">
+						{{ "ai_assistant_leave_feedback_button" | translate }}
+					</button>
+				</div>
+			</div>
+
+			<div class="bottom-buttons-options-container" *ngIf="interaction != null">
+				<button class="options-button" ion-button color="success" (click)="handleTryAgainButtonClick()">
+					{{ "ai_assistant_try_again_button" | translate }}{{ client.getName() }}
+				</button>
+
+				<button class="options-button" ion-button color="success" (click)="nav_controller.pop()">
+					{{ "ai_assistant_conversation_page_try_with_different_client" | translate }}
+				</button>
+
+				<button class="options-button" ion-button color="success" (click)="app.helpers.handleNavigation(this.nav_controller, 'assistant/technique-list')">
+					{{ "ai_assistant_conversation_page_continue_button" | translate }}
+				</button>
+
+				<h3 class="learn-more" (click)="handleElearningButtonClick()">
+					{{ "ai_assistant_conversation_page_learn_more_about_technique_button" | translate }}{{ mi_technique.getName() }}
+				</h3>
+			</div>
+
+			<form *ngIf="interaction == null && ai_assistant != null" (ngSubmit)="handleSendReplyButtonClick()" padding>
+				<ion-item id="user-input-text-box">
+					<ion-textarea rows="5" [(ngModel)]="user_input" name="user_input" class="normal-text-input"></ion-textarea>
+				</ion-item>
+
+				<ion-grid>
+					<ion-row justify-content-center>
+						<ion-col col-md-4 col-sm-6 col-xs-8>
+							<button ion-button color="success" block type="submit">
+								{{ "ai_assistant_conversation_page_send_reply_button" | translate }}
+							</button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</form>
+		</div>
+	</div>
+</ion-content>

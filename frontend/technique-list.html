@@ -1,0 +1,35 @@
+<ion-header>
+	<custom-navbar [hideBackButton]="false" [hideHamburgerButton]="false" [pageTitle]="( 'ai_assistant_page_title' | translate )" [showSearchButton]="false"></custom-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div class="content-max-width">
+		<div *ngIf="app.user.isPermissionEnabled('administrates-ai-assistant')" class="add-button">
+			<button ion-button (click)="app.helpers.handleNavigation(nav_controller, 'assistant/technique-settings')">{{ "ai_assistant_technique_list_page_add_new_technique_button" | translate }}</button>
+		</div>
+
+		<ion-card *ngFor="let technique of ordered_techniques" (click)="handleTechniqueCardClick($event, technique)">
+			<div class="card-content-container">
+				<div *ngIf="app.user.isPermissionEnabled('administrates-ai-assistant')" class="technique-settings-container">
+					<ion-icon *ngIf="app.user.isPermissionEnabled('administrates-ai-assistant')" class="technique-settings-button-icon" name="settings" (click)="app.helpers.handleNavigation(nav_controller, 'assistant/technique-settings', {'mi_technique': technique.getSlug()})"></ion-icon>
+				</div>
+				<div [ngClass]="{'technique-container-non-admin': !app.user.isPermissionEnabled('administrates-ai-assistant'), 'technique-container-admin': app.user.isPermissionEnabled('administrates-ai-assistant')}">
+					<h2>{{ technique.getName() }}</h2>
+					<div class="card-right-content">
+						<img class="arrow-icon" end item-end src="assets/imgs/arrow-forward-circle-outline.png" />
+					</div>
+				</div>
+				<div class="expanded-menu-row-button" (click)="expandMenu(technique.getSlug())">
+					<p class="expanded-menu-description-subtitle">{{ "ai_assistant_technique_list_page_description" | translate }}</p>
+					<img src="assets/imgs/chevron-down-black.png" *ngIf="!is_technique_expanded_map[technique.getSlug()]" class="expanded-menu-chevron-img">
+					<img src="assets/imgs/chevron-up-black.png" *ngIf="is_technique_expanded_map[technique.getSlug()]" class="expanded-menu-chevron-img">
+				</div>
+				<div [ngClass]="{'expanded-menu': is_technique_expanded_map[technique.getSlug()],'not-expanded-menu': !is_technique_expanded_map[technique.getSlug()]}">
+					<p class="expanded-menu-text">
+						{{ technique.getDefinition() }}
+					</p>
+				</div>
+			</div>
+		</ion-card>
+	</div>
+</ion-content>

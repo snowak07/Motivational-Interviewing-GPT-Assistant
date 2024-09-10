@@ -1,0 +1,21 @@
+#
+# Folders that should be ignored
+#
+logs/*
+!logs/README.md
+!logs/.htaccess
+vendor/*
+ 
+#
+# Individual Files
+#
+# Individual files in root directory
+*.geany
+composer.lock
+ 
+# Ignore any PHPUnit results caching
+.phpunit.result.cache
+.phpunit.cache/*
+ 
+# Ignore MacOS cache files
+.DS_STORE

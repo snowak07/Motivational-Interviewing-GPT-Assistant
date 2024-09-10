@@ -1,0 +1,256 @@
+page-assistant-conversation {
+	.content-max-width { // the inner content div that we want to keep to a set width
+		position: relative;
+		max-width: 800px;
+		margin-left: auto;
+		margin-right: auto;
+		// padding-top: 56px; // Pad the top the height of the navbar, which has position absolute to keep it transparent-appearing
+
+		.feedback {
+			display: flex;
+			flex-direction: column;
+			border-radius: .8rem;
+			background-color: color($colors, light_gray);
+			margin-bottom: 40px;
+
+			.feedback-text-content {
+				display: flex;
+				flex-direction: column;
+				padding-left: 1.5rem;
+				padding-top: 1rem;
+
+				.feedback-description {
+					margin-top: 0rem;
+				}
+
+				.feedback-header {
+					float: left;
+					text-decoration: underline;
+				}
+			}
+
+			.feedback-button-container {
+				display: flex;
+				justify-content: center;
+				padding-bottom: 1.5rem;
+
+				.feedback-button {
+					background-color: color($colors, accent_color) !important;
+					padding: 25px 40px 25px 40px !important;
+					width: 100% !important;
+					max-width: 300px !important;
+				}
+			}
+		}
+
+		.profile-container {
+			all: unset;
+			display: flex;
+			justify-content: center;
+			align-items: space-evenly;
+
+			.profile-name-img-container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				padding-right: 3rem;
+				padding-left: 2rem;
+
+				.client-name {
+					margin-top: 0.75rem;
+				}
+
+				ion-avatar img {
+					width: 100% !important;
+					height : 100% !important;
+					max-width: 9rem !important;
+					max-height: 9rem !important;
+					min-width: 9rem !important;
+					min-height: 9rem !important;
+				}
+			}
+
+			.profile-text-container {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+
+				.read-full-bio-link {
+					margin-top: 1rem;
+					text-decoration: underline;
+					cursor: pointer;
+				}
+			}
+
+			.profile-text-container:before {
+				content: '';
+			}
+		}
+
+		.user-instruction-container {
+			text-align: center;
+			width: 80%;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		.therapist-prompt {
+			padding-bottom: 60px;
+		}
+
+		.user-message-container {
+			display: flex;
+			justify-content: right;
+			flex-direction: column;
+			width: 80%;
+			margin-left: auto;
+			padding-top: 20px;
+
+			.thread-container {
+				display: flex;
+				flex-direction: column;
+				border-radius: .8rem;
+				background-color: color($colors, lightest_gray);
+				padding: 12px;
+
+				.author-container {
+					display: flex;
+					flex-direction: row;
+					justify-content: flex-end;
+				}
+			}
+
+			.message-container {
+				padding: 12px 10px 12px 10px;
+			}
+		}
+
+		.ai-container {
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: column;
+			width: 80%;
+			padding-bottom: 20px;
+
+			.ai-content-container {
+				display: flex;
+				flex-direction: column;
+				border-radius: .8rem;
+				background-color: color($colors, lightest_gray);
+				padding: 12px;
+			}
+
+			.message-container {
+				padding: 12px 10px 12px 10px;
+			}
+		}
+
+		.evaluation-container {
+			padding: 20px;
+			.evaluation-header-container {
+				h1 {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+	.bottom-buttons-options-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-left: 16px;
+		padding-right: 16px;
+		padding-bottom: 5rem;
+
+		.options-button {
+			padding: 25px 40px 25px 40px !important;
+			width: 100% !important;
+			max-width: 300px !important;
+		}
+
+		.learn-more {
+			padding-top: 2rem;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+
+	///////////////////////// Gradient Header /////////////////////////
+	// ion-navbar {
+	//     background-color: transparent !important;
+	// }
+
+	// ion-header {
+	//     .toolbar {
+	//       position: absolute;
+
+	//       .toolbar-background {
+	//         background: transparent;
+	//       }
+	//       .toolbar-title {
+	//         color: white !important;
+	//       }
+	//     }
+	// }
+
+	// .header-md {
+	//     background-image: none !important;
+	// }
+
+	// .scroll-content {
+	//     padding: 0 !important;
+	// }
+
+	// .item-md {
+	//     padding-left: 0 !important;
+	//     .item-inner {
+	//         padding-right: 0 !important;
+	//     }
+	// }
+
+	// .profile-gradient-header {
+	//     background: rgb(162,88,255);
+	//     background: linear-gradient(180deg, rgba(162,88,255,1) 0%, rgba(160,193,255,1) 100%);
+
+	//     height: 130px;
+	//     width: 100%;
+	//     position: absolute;
+	//     top: 0;
+	// }
+
+	// .assistant-profile-container {
+	//     display: flex;
+	//     flex-direction: row;
+	//     padding-top: 16px;
+	//     justify-content: center;
+	//     padding-right: 40px;
+
+	//     .assistant-profile-img {
+	//         width: 130px;
+	//         height: auto;
+	//     }
+
+	//     .assistant-profile-text {
+	//         display: flex;
+	//         flex-direction: column;
+	//         margin-top: auto;
+	//         margin-bottom: auto; // these auto margins vertically center this div
+	//         padding-left: 16px;
+
+	//         h1 {
+	//             font-size: 2.2rem;
+	//             color: white !important;
+	//         }
+
+	//         .read-full-bio-link {
+	//             padding-top: 0.5rem;
+	//             text-decoration: underline;
+	//             cursor: pointer;
+	//         }
+	//     }
+	// }
+	///////////////////////////////////////////////////////////////////////////
+}

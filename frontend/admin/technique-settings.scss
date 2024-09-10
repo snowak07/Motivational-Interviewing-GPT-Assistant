@@ -1,0 +1,24 @@
+page-technique-settings {
+    .ai-instructions-hint {
+        padding-left: 2rem;
+        color: gray !important;
+        padding-top: 0rem !important;
+        margin-top: 0rem !important;
+        font-size: 12px !important;
+    }
+
+    .field-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    ion-textarea {
+        white-space: pre-line;
+    }
+
+    .save-button {
+        display: flex;
+        justify-content: center;
+    }
+}

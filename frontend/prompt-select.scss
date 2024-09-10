@@ -1,0 +1,115 @@
+page-prompt-select {
+    ion-card {
+        border-radius: 10px !important;
+        margin-bottom: 3rem;
+    }
+
+    .content-max-width { // the inner content div that we want to keep to a set width
+        position: relative;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        // padding-top: 56px; // Gradient Header: Pad the top the height of the navbar, which has position absolute to keep it transparent-appearing
+
+        .card-content-container {
+            display: flex;
+            flex-direction: column;
+
+            .card-container {
+                display: flex;
+                flex-direction: row;
+
+                .client-prompt-container {
+                    padding-top: 2rem;
+                }
+
+                .profile-picture-name-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-left: 1.5rem;
+                    margin-bottom: 0.5rem;
+                    margin-right: 2.5rem;
+
+                    ion-avatar img {
+                        width: 100% !important;
+                        height : 100% !important;
+                        max-width: 8rem !important;
+                        max-height: 8rem !important;
+                        min-width: 8rem !important;
+                        min-height: 8rem !important;
+                    }
+                }
+            }
+
+            .bio-row-button {
+                background-color: color($colors, lightest_gray);
+                width: 100%;
+                padding: 6px 25px 6px 20px;
+                cursor: pointer;
+
+                .read-full-bio-link {
+                    float: left;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .technique-definition {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding: 1rem 4rem 2rem 4rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    /////////// Gradient header ///////////
+    // ion-navbar {
+    //     background-color: transparent !important;
+    // }
+
+    // ion-header {
+    //     .toolbar {
+    //       position: absolute;
+
+    //       .toolbar-background {
+    //         background: transparent;
+    //       }
+    //       .toolbar-title {
+    //         color: white !important;
+    //       }
+    //     }
+    // }
+
+    // .header-md {
+    //     background-image: none !important;
+    // }
+
+    // .item-md {
+    //     padding-left: 0 !important;
+    //     .item-inner {
+    //         padding-right: 0 !important;
+    //     }
+    // }
+
+    // .scroll-content {
+    //     padding: 0 !important;
+    // }
+
+    // .profile-gradient-header {
+    //     background: rgb(162,88,255);
+    //     background: linear-gradient(180deg, rgba(162,88,255,1) 0%, rgba(160,193,255,1) 100%);
+
+    //     height: 100%;
+    //     width: 100%;
+    //     position: absolute;
+    //     top: 0;
+    //     z-index: -100;
+    // }
+    ///////////////////////////////////////
+}

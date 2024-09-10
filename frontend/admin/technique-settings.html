@@ -1,0 +1,33 @@
+<ion-header>
+	<custom-navbar [hideBackButton]="false" [hideHamburgerButton]="false" [pageTitle]="( 'ai_assistant_technique_settings_page_title' | translate )" [showSearchButton]="false"></custom-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list padding>
+		<ion-item class="field-item">
+			<ion-label>{{ "ai_assistant_technique_settings_page_name_edit_field_label" | translate }}</ion-label>
+			<ion-textarea rows="1" [(ngModel)]="name_field_value" name="name_field_value" class="normal-text-input"></ion-textarea>
+		</ion-item>
+		<ion-item class="field-item">
+			<ion-label>{{ "ai_assistant_technique_settings_page_definition_edit_field_label" | translate }}</ion-label>
+			<ion-textarea rows="5" [(ngModel)]="definition_field_value" name="definition_field_value" class="normal-text-input"></ion-textarea>
+		</ion-item>
+		<ion-item class="field-item">
+			<ion-label>{{ "ai_assistant_user_instruction_edit_field_label" | translate }}</ion-label>
+			<ion-textarea rows="5" [(ngModel)]="user_instruction_field_value" name="user_instruction_field_value" class="normal-text-input"></ion-textarea>
+		</ion-item>
+		<ion-item class="field-item">
+			<ion-label>{{ "ai_assistant_technique_settings_page_ai_instruction_edit_field_label" | translate }}</ion-label>
+			<ion-textarea rows="10" [(ngModel)]="ai_instruction_field_value" name="ai_instruction_field_value" class="normal-text-input"></ion-textarea>
+		</ion-item>
+		<p class="ai-instructions-hint">{{ "ai_assistant_technique_settings_page_ai_instructions_hint" | translate }}</p>
+		<ion-item class="field-item">
+			<ion-label>{{ "ai_assistant_technique_settings_page_version_edit_field_label" | translate }}</ion-label>
+			<ion-textarea rows="1" [(ngModel)]="version_field_value" name="version_field_value" class="normal-text-input"></ion-textarea>
+		</ion-item>
+	</ion-list>
+
+	<div class="save-button">
+		<button ion-button (click)="handleSaveButtonClick()">{{ "save" | translate }}</button>
+	</div>
+</ion-content>

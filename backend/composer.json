@@ -1,0 +1,31 @@
+{
+	"name": "labcoat/plugins-aichat",
+	"authors": [
+		{
+			"name": "CHESS",
+			"email": "techsupport@chess.wisc.edu"
+		}
+	],
+	"minimum-stability": "dev",
+	"config": {
+		"vendor-dir": "vendor",
+		"allow-plugins": {
+			"mnsami/composer-custom-directory-installer": true
+		}
+	},
+	"require": {
+		"mnsami/composer-custom-directory-installer": ">=2.0.0",
+		"labcoat/core": "2.*.*"
+	},
+	"repositories" : [
+		{
+			"type": "vcs",
+			"url":  "git@git.doit.wisc.edu:uw-chess/labcoat/labcoat-core.git"
+		}
+	],
+	"extra": {
+		"installer-paths": {
+			"labcoat": ["labcoat/core"]
+		}
+	}
+}

@@ -1,0 +1,38 @@
+<ion-header>
+	<custom-navbar [hideBackButton]="false" [hideHamburgerButton]="false" [pageTitle]="( 'ai_assistant_page_title' | translate )" [showSearchButton]="false"></custom-navbar>
+</ion-header>
+
+<ion-content padding>
+	<!-- <div class="profile-gradient-header"></div> -->
+	<div class="content-max-width">
+		<h1 class="page-header">
+			{{ page_header }}
+		</h1>
+		<p class="technique-definition" *ngIf="mi_technique != null">
+			{{ mi_technique.getDefinition() }}
+		</p>
+		<ion-list no-lines>
+			<ion-card *ngFor="let client_prompt of ordered_client_prompts" (click)="handlePromptCardClick($event, client_prompt.client, client_prompt.prompt)">
+				<div class="card-content-container">
+					<div class="card-container">
+						<div class="profile-picture-name-container">
+							<client-profile-picture *ngIf="client_prompt.client != null" [profile_picture_uri]="client_prompt.client.getProfilePicture()" [client_name]="client_prompt.client.getName()"></client-profile-picture>
+							<h2>
+								{{ client_prompt.client.getName() }}
+							</h2>
+						</div>
+						<div class="client-prompt-container">
+							<p>
+								"{{ client_prompt.prompt.getContent() }}"
+							</p>
+						</div>
+					</div>
+
+					<div class="bio-row-button">
+						<p class="read-full-bio-link">{{ "ai_assistant_read_full_bio_link" | translate }}</p>
+					</div>
+				</div>
+			</ion-card>
+		</ion-list>
+	</div>
+</ion-content>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<ruleset name="LC_CodeSniffer" namespace="LC\CS\Standard">
+  <file>./src</file>
+  <file>./unittests</file>
+  <arg value="p" />
+  <arg name="extensions" value="php" />
+
+  <!-- Require functions and variables to be commented with PHPDoc format -->
+  <!-- <rule ref="Generic.Commenting.DocComment"/> -->
+
+  <!-- Must have one class per file -->
+  <rule ref="Generic.Files.OneClassPerFile"/>
+
+  <!-- Must use tabs instead of spaces -->
+  <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+
+  <!-- Must use <?php as opposed to <? to open blocks of PHP -->
+  <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+
+  <!-- Identify merge conflicts -->
+  <rule ref="Generic.VersionControl.GitMergeConflict"/>
+
+  <!-- No eval("") statements -->
+  <rule ref="Squiz.PHP.Eval"/>
+
+  <!-- No extra whitespace at the end of lines -->
+  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
+
+  <!-- One space around logical operators -->
+  <rule ref="Squiz.WhiteSpace.LogicalOperatorSpacing"/>
+</ruleset>

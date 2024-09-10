@@ -1,0 +1,4 @@
+name: AIChat Plugin
+description: Allows saving of AI chatbot interactions to the database
+version: 2.1.1
+namespace: AIChat

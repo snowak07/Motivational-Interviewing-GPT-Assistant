@@ -1,0 +1,90 @@
+page-technique-list {
+    ion-card {
+        border-radius: 10px !important;
+    }
+
+    .content-max-width { // the inner content div that we want to keep to a set width
+        position: relative;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+
+        .add-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-content-container {
+            display: flex;
+            flex-direction: column;
+
+            .expanded-menu-row-button {
+                background-color: color($colors, lightest_gray);
+                width: 100%;
+                padding: 5px 20px 5px 15px;
+                cursor: pointer;
+
+                .expanded-menu-chevron-img {
+                    margin-top: 7px;
+                    width: 2.5rem !important;
+                    float: right;
+                }
+
+                .expanded-menu-description-subtitle {
+                    float: left;
+                }
+            }
+
+            /* Dropdown content (hidden by default) */
+            .expanded-menu {
+                display: block;
+                background-color: white;
+                width: 100%;
+                left: 0;
+                box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                padding: 10px 10px 10px 10px;
+            }
+
+            .not-expanded-menu {
+                display: none;
+            }
+        }
+    }
+
+    .technique-settings-container {
+        display: flex;
+        margin-right: 5px;
+        margin-top: 5px;
+        justify-content: flex-end;
+    }
+
+    .technique-container-admin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 13.2px 15px 30px 15px;
+    }
+
+    .technique-container-non-admin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 15px;
+    }
+
+    .card-right-content {
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        min-width: 3rem;
+        right: 0;
+
+        .arrow-icon {
+            right: 0;
+            flex-shrink: 0;
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+    }
+}
